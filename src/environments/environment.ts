@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://green-room-app-api.herokuapp.com/api'
+  API_URL: 'https://apps.luiismayo.com/green-room-back/api'
 };
 
 /*

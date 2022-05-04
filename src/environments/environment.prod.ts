@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://green-room-app-api.herokuapp.com/api'
+  API_URL: 'https://apps.luismayo.com/green-room-back/api'
 }
