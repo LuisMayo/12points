@@ -21,6 +21,7 @@ export class VotesComponent implements OnInit {
   loadingContestants = true;
   loadingMyVotes = true;
   faShare = faShare;
+  currentYear: number;
 
   @ViewChild('ranking', { static: false }) screen: any;
   
@@ -49,7 +50,8 @@ export class VotesComponent implements OnInit {
       (err) => {
         alert(err.message)
       }
-    )
+    );
+    this.currentYear = new Date().getFullYear();
   }
 
   pointContestant(contestant: any, index) {

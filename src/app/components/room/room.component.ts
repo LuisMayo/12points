@@ -35,8 +35,8 @@ export class RoomComponent implements OnInit {
     try {
       navigator.share({
         title: 'Green Room',
-        text: `Join the room ${this.room.name} and vote for your favourite #Eurovision2021 contestants`,
-        url: this.utils.getExternalURL(`room/${this.room.id}`)
+        url: this.utils.getExternalURL(`room/${this.room.id}`),
+        text: `Join the room ${this.room.name} and vote for your favourite #Eurovision${new Date().getFullYear()} contestants`
       })
     } catch(err) {
       navigator.clipboard.writeText(this.utils.getExternalURL(`room/${this.room.id}`));
