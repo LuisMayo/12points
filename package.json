@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "jquery": "^3.6.0",
     "ngx-capture": "^0.10.2",
+    "node-sass": "^5.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
