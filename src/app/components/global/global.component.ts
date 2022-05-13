@@ -18,7 +18,7 @@ export class GlobalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateRanking();
-    this.interval = window.setInterval(() => this.updateRanking(), 120000);
+    this.interval = window.setInterval(() => this.updateRanking(), 180000);
   }
 
   ngOnDestroy(): void {

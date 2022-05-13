@@ -24,7 +24,7 @@ export class RoomComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.id = this.route.snapshot.url[1].path;
     this.getRoomDetails();
-    this.interval = window.setInterval(() => this.getRoomDetails(), 60000);
+    this.interval = window.setInterval(() => this.getRoomDetails(), 90000);
   }
 
   ngOnDestroy() {
