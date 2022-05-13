@@ -5,15 +5,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class VotedByPipe implements PipeTransform {
 
+  // Args[0] being theusers array, args[1] whether it should be extended or not
   transform(contestant, ...args: any[][]): string {
-    const users: any[] = args[0].filter(user => user.votes.find(vote => vote.contestant.id === contestant.id) != null);
+    const findVoteFunction = vote => vote.contestant.id === contestant.id;
+    const users: any[] = args[0].filter(user => user.votes.find(findVoteFunction) != null);
     console.log(users);
-    const usersFiltered = users.slice(0, 15);
-    // Create the voted by text. If nobody voted it, it's an special text. Else we concat the use rnames + votes using the reduce function
-    const showField =  usersFiltered.length === 0 ? 'No votes' : usersFiltered.reduce((prev, user, index, arr) => {
-      // Is it the last name?
-      const chunkEnd = index === arr.length - 1 ? '' : ', ';
-      return `${prev}${user.username} (${user.votes.find(vote => vote.contestant.id === contestant.id).points})${chunkEnd}`;
+    users.sort((a, b) => b.votes.find(findVoteFunction).points - a.votes.find(findVoteFunction).points);
+    const shownUsers = args[1] ? users : users.slice(0, 3);
+    // Create the voted by text. If nobody voted it, it's an special text. Else we concat the usernames + votes using the reduce function
+    const showField =  shownUsers.length === 0 ? 'No votes' : shownUsers.reduce((prev, user, index, arr) => {
+      // Is it the last name?, If it is, did we left somwone behind?
+      const chunkEnd = index === arr.length - 1 ? (shownUsers.length === users.length ? '' : ' and more') : ', ';
+      return `${prev}${user.username} (${user.votes.find(findVoteFunction).points})${chunkEnd}`;
     }, 'Voted by ');
     return showField;
   }
